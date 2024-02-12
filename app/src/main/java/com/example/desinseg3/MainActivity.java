@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.desinseg3.ModeloUsuario.ModeloUsuario;
@@ -32,11 +33,15 @@ public class MainActivity extends AppCompatActivity {
          ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                valido=buscoUsuario(txtUsuario.toString(),txtClave.toString());
-                Toast toast1 =
-                        Toast.makeText(getApplicationContext(),
-                                "Usuario no existe"+valido, Toast.LENGTH_SHORT);
-                toast1.show();
+                valido=buscoUsuario(txtUsuario.getText().toString(),txtClave.getText().toString());
+                if(valido){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Usuario existe "+valido, Toast.LENGTH_SHORT);
+                    toast1.show();
+
+                }
+
             }
         });
 
@@ -45,7 +50,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean buscoUsuario(String usuario,String clave){
-      valido=true;
+
+                Retrofit retrofit=new Retrofit.Builder()
+                .baseUrl("https://www.desinseg.com/WebServiceDesinseg/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        InterfaceUsuario userInterface=retrofit.create(InterfaceUsuario.class);
+
+        Call<List<ModeloUsuario>> call = userInterface.BuscoUsuario(usuario,clave);
+
+         call.enqueue(new Callback<List<ModeloUsuario>>() {
+             @Override
+             public void onResponse(Call<List<ModeloUsuario>> call, Response<List<ModeloUsuario>> response) {
+            int total=0;
+                        total=response.body().size();
+                  if(total>0){
+                      valido=true;
+
+                  }else{
+                      valido=false;
+
+                  }
+
+
+
+             }
+
+             @Override
+             public void onFailure(Call<List<ModeloUsuario>> call, Throwable t) {
+
+             }
+         });
+
+
     return valido;
     }
 
