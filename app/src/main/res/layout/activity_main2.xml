@@ -6,4 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="12dp" />
+
+    <LinearLayout
+        android:id="@+id/Liner1"
+        android:layout_width="361dp"
+        android:layout_height="606dp"
+        android:layout_marginStart="24dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="62dp">
+
+
+        <EditText
+            android:id="@+id/txtNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese sus nombres.."
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/txtApe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese sus Apellidos.."
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/txtUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese  Usuario.."
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/txtCla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese Clave.."
+            android:inputType="text" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

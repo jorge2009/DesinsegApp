@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                             toast1.show();
                             */
                             Intent intent = new Intent (v.getContext(), MainActivity2.class);
+                            intent.putExtra("usuario", txtUsuario.getText().toString());
                             startActivity(intent);
                             Log.d("Mensaje", "Encontrado: "+total);
 
