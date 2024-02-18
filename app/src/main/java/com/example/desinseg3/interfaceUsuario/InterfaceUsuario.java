@@ -34,4 +34,47 @@ public interface InterfaceUsuario {
             @Field("cod_perfil") int codPerfil,
             @Field("key") String key
     );
+
+    @FormUrlEncoded
+    @POST("ActualizaDSC.php")
+    Call<List<ModeloUsuario>> ActualizarUsuario(
+            @Field("nombre") String nombre,
+            @Field("apellido") String apellido,
+            @Field("usuario") String usuario,
+            @Field("clave") String clave,
+            @Field("correo") String correo,
+            @Field("cod_perfil") int codPerfil,
+            @Field("key") String key
+    );
+    @FormUrlEncoded
+    @POST("EliminaDSC.php")
+    Call<List<ModeloUsuario>> EliminarUsuario(
+            @Field("cod_usuario") int codUsuario,
+            @Field("key") String key
+    );
+
+    @FormUrlEncoded
+    @POST("ListaUsuarioDSC.php")
+    Call<List<ModeloUsuario>> ListarUsuario(
+            @Field("nombre") String nombre,
+            @Field("apellido") String apellido,
+            @Field("usuario") String usuario,
+            @Field("clave") String clave,
+            @Field("correo") String correo,
+            @Field("cod_perfil") int codPerfil,
+            @Field("key") String key
+    );
+
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @FormUrlEncoded
+    @POST("UsuarioDSC.php")
+    Call<List<ModeloUsuario>> GuardoUser(
+            @Field("nombre") String nombre,
+            @Field("apellido") String apellido,
+            @Field("usuario") String usuario,
+            @Field("clave") String clave,
+            @Field("correo") String correo,
+            @Field("cod_perfil") int codPerfil,
+            @Field("key") String key
+    );
 }
