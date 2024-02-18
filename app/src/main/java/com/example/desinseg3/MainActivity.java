@@ -40,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Registro de usuario ", Toast.LENGTH_SHORT);
                 toast1.show();
+
+                Intent intent = new Intent (v.getContext(), CrearUsuario.class);
+                intent.putExtra("usuario", txtUsuario.getText().toString());
+                startActivity(intent);
+                Log.d("Mensaje", "Encontrado: ");
             }
         });
          ingresar.setOnClickListener(new View.OnClickListener() {

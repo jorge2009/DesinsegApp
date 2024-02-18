@@ -1,6 +1,7 @@
 package com.example.desinseg3;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -37,71 +38,22 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        String usuario="";
-        EditText userno=(EditText) findViewById(R.id.txtNom);
-        EditText userap=(EditText) findViewById(R.id.txtApe);
-        EditText useru=(EditText) findViewById(R.id.txtUser);
-        EditText userc=(EditText) findViewById(R.id.txtCla);
-        EditText userco=(EditText) findViewById(R.id.txtCorreo);
-        EditText userpe=(EditText) findViewById(R.id.txtPerfil);
+        String usuario = "";
+        EditText userno = (EditText) findViewById(R.id.txtNom);
+        EditText userap = (EditText) findViewById(R.id.txtApe);
+        EditText useru = (EditText) findViewById(R.id.txtUser);
+        EditText userc = (EditText) findViewById(R.id.txtCla);
+        EditText userco = (EditText) findViewById(R.id.txtCorreo);
+        EditText userpe = (EditText) findViewById(R.id.txtPerfil);
         usuario = getIntent().getExtras().getString("usuario");
 
-                            Toast toast1 =
-                                    Toast.makeText(getApplicationContext(),
-                                            "Bienvenido "+usuario, Toast.LENGTH_SHORT);
-                            toast1.show();
-        Button guardaBtn=(Button) findViewById(R.id.btnGuardarUsuario);
-        guardaBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Retrofit retrofit=new Retrofit.Builder()
-                        .baseUrl("https://www.desinseg.com/WebServiceDesinseg/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-          int perfil=1;
-          String key="jorge2009";
-                InterfaceUsuario userInterface=retrofit.create(InterfaceUsuario.class);
-
-                Call<ModeloUsuario> guardoUser = userInterface.GuardoUsuario(userno.getText().toString(),userap.getText().toString(),
-                        useru.getText().toString(),userc.getText().toString(),userco.getText().toString(),perfil,key);
-
-             guardoUser.enqueue(new Callback<ModeloUsuario>() {
-                 @Override
-                 public void onResponse(Call<ModeloUsuario> call, Response<ModeloUsuario> response) {
-                     String responseBody = response.body().toString();
-                     String valor="";
-                    try {
-                        JSONObject json = new JSONObject(responseBody);
-                       valor= json.getString("estado");
-
-                    }catch (Exception e){
-                        e.getMessage();
-                    }
-
-                             //  userpe.setText(call.hashCode());
-                         Toast toast1 =
-                                 Toast.makeText(getApplicationContext(),
-                                         "Insertado "+valor, Toast.LENGTH_SHORT);
-                         toast1.show();
-
-
-
-                 }
-
-                 @Override
-                 public void onFailure(Call<ModeloUsuario> call, Throwable t) {
-                    userpe.setText(t.getMessage());
-
-                 }
-             });
-
-            }
-        });
+        Toast toast1 =
+                Toast.makeText(getApplicationContext(),
+                        "Bienvenido " + usuario, Toast.LENGTH_SHORT);
+        toast1.show();
+        Button guardaBtn = (Button) findViewById(R.id.btnGuardarUsuario);
 
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
@@ -115,10 +67,8 @@ public class MainActivity2 extends AppCompatActivity {
       switch (item.getItemId()){
           case 2131230963:
 
-              Toast.makeText(this,"ESTOY EN USUARIO",Toast.LENGTH_SHORT).show();
-              LinearLayout liner =(LinearLayout) findViewById(R.id.Liner1);
-              liner.setVisibility(View.VISIBLE);
-
+              Intent intent = new Intent(getApplicationContext(), CrearUsuario.class);
+              startActivity(intent);
 
               break;
           case 2131230961:
@@ -132,3 +82,4 @@ public class MainActivity2 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
