@@ -32,7 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
         EditText txtUsuario=(EditText) findViewById(R.id.txtUsuario);
         EditText txtClave=(EditText) findViewById(R.id.txtClave);
-
+        TextView textView=(TextView) findViewById(R.id.txtRegistro);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast1 =
+                        Toast.makeText(getApplicationContext(),
+                                "Registro de usuario ", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
          ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

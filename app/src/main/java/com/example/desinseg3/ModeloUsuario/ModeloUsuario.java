@@ -7,14 +7,22 @@ public class ModeloUsuario {
     private int cod_perfil;
     private String nombre;
     private String apellido;
-    private int cod_empresa;
 
-    private int cod_estado;
+    private String correo;
+
+    private String key;
 
 
-    public ModeloUsuario(String usuario, String clave) {
+    public ModeloUsuario(int cod_usuario, String usuario, String clave, int cod_perfil, String nombre, String apellido, String correo, String key, int cod_empresa, int cod_estado) {
+        this.cod_usuario = cod_usuario;
         this.usuario = usuario;
         this.clave = clave;
+        this.cod_perfil = cod_perfil;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.key = key;
+
     }
 
     public int getCod_usuario() {
@@ -65,19 +73,20 @@ public class ModeloUsuario {
         this.apellido = apellido;
     }
 
-    public int getCod_empresa() {
-        return cod_empresa;
+
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCod_empresa(int cod_empresa) {
-        this.cod_empresa = cod_empresa;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public int getCod_estado() {
-        return cod_estado;
+    public String getKey() {
+        return key;
     }
 
-    public void setCod_estado(int cod_estado) {
-        this.cod_estado = cod_estado;
+    public void setKey(String key) {
+        this.key = key;
     }
 }

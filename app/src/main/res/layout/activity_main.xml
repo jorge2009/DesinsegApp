@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Ingrese su clave.."
-        android:inputType="text"
+        android:inputType="text|textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
@@ -46,10 +46,18 @@
         app:layout_constraintVertical_bias="0.619" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="190dp" />
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:shadowColor="#FFFFFF"
+        android:singleLine="true"
+        android:text="Registro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.896" />
 </androidx.constraintlayout.widget.ConstraintLayout>
