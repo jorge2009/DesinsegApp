@@ -102,10 +102,17 @@ public class CrearUsuario extends AppCompatActivity {
                        }
 
                        if(codigo==1){
+                           txtNomUser.setText("");
+                           txtApeUser.setText("");
+                           txtClaUser.setText("");
+                           txtCorUser.setText("");
+                           txtUsuUser.setText("");
+                           txtNomUser.requestFocus();
                            Toast toast1 =
                                    Toast.makeText(getApplicationContext(),
                                            "Registro de usuario Correcto", Toast.LENGTH_SHORT);
                            toast1.show();
+
                        }else{
                           Toast toast2= Toast.makeText(getApplicationContext(),
                                    "Problemas  de registro de usuario", Toast.LENGTH_SHORT);
