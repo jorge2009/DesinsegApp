@@ -44,6 +44,43 @@ public class CrearUsuario extends AppCompatActivity {
 
                 InterfaceUsuario userInterface=retrofit.create(InterfaceUsuario.class);
 
+                //valido datos
+                if(txtNomUser.getText().length()==0){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "El nombre no puede ser vacio ", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    return;
+                }
+                if(txtApeUser.getText().length()==0){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "El Apellido no puede ser vacio ", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    return;
+                }
+                if(txtUsuUser.getText().length()==0){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "El Usuario no puede ser vacio ", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    return;
+                }
+                if(txtClaUser.getText().length()==0){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "La clave no puede ser vacio ", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    return;
+                }
+                if(txtCorUser.getText().length()==0){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "El Correo no puede ser vacio ", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    return;
+                }
+
                 Call<List<ModeloUsuario>> call = userInterface.GuardoUser(txtNomUser.getText().toString(),txtApeUser.getText().toString(),
                         txtUsuUser.getText().toString(),txtClaUser.getText().toString(),txtCorUser.getText().toString(),
                         1,"jorge2009");
@@ -51,12 +88,30 @@ public class CrearUsuario extends AppCompatActivity {
                    @Override
                    public void onResponse(Call<List<ModeloUsuario>> call, Response<List<ModeloUsuario>> response) {
                        int total=0;
-                       response.body().size();
+                       total=response.body().size();/*
 
                        Toast toast1 =
                                Toast.makeText(getApplicationContext(),
-                                       "Registro de usuario "+total, Toast.LENGTH_SHORT);
+                                       "Registro de usuario ", Toast.LENGTH_SHORT);
                        toast1.show();
+                       */
+                       int codigo=0;
+                       for(ModeloUsuario model: response.body()){
+                          codigo= model.getCod_usuario();
+
+                       }
+
+                       if(codigo==1){
+                           Toast toast1 =
+                                   Toast.makeText(getApplicationContext(),
+                                           "Registro de usuario Correcto", Toast.LENGTH_SHORT);
+                           toast1.show();
+                       }else{
+                          Toast toast2= Toast.makeText(getApplicationContext(),
+                                   "Problemas  de registro de usuario", Toast.LENGTH_SHORT);
+                           toast2.show();
+
+                       }
 
                    }
 
