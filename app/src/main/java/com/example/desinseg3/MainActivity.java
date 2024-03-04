@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                             "Usuario existe "+valido, Toast.LENGTH_SHORT);
                             toast1.show();
                             */
-                            Intent intent = new Intent (v.getContext(), MainActivity2.class);
+                            Intent intent = new Intent (v.getContext(), Principal.class);
                             intent.putExtra("usuario", txtUsuario.getText().toString());
                             startActivity(intent);
                             Log.d("Mensaje", "Encontrado: "+total);
