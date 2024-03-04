@@ -54,10 +54,12 @@
         android:shadowColor="#FFFFFF"
         android:singleLine="true"
         android:text="Registro"
+        android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+        app:layout_constraintVertical_bias="0.896"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
