@@ -12,8 +12,8 @@ public class Principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-
-
+        ImageView imgv=(ImageView) findViewById(R.id.imageView);
+        imgv.setImageResource(R.drawable.audio);
 
     }
 }
